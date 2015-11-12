@@ -50,8 +50,8 @@ full.zoom.addEventListener('input', full.draw)
 full.alpha.addEventListener('input', full.draw)
 
 full.canvas.addEventListener('mousedown', function (e) {
-  full.lastX = e.clientX - this.offsetLeft + pageXOffset
-  full.lastY = e.clientY - this.offsetTop + pageYOffset
+  full.lastX = e.clientX - this.getBoundingClientRect().left + pageXOffset
+  full.lastY = e.clientY - this.getBoundingClientRect().top + pageYOffset
   full.pressed = true
   full.draw()
 })
@@ -63,8 +63,8 @@ full.canvas.addEventListener('mouseleave', function () {
 })
 full.canvas.addEventListener('mousemove', function (e) {
   if (full.pressed) {
-    var x = e.clientX - this.offsetLeft + pageXOffset
-    var y = e.clientY - this.offsetTop + pageYOffset
+    var x = e.clientX - this.getBoundingClientRect().left + pageXOffset
+    var y = e.clientY - this.getBoundingClientRect().top + pageYOffset
     full.centerX += (x - full.lastX)
     full.centerY += (y - full.lastY)
     full.lastX = x
@@ -159,8 +159,8 @@ divide.rightZoom.addEventListener('input', divide.draw)
 divide.rightAlpha.addEventListener('input', divide.draw)
 
 divide.canvas.addEventListener('mousedown', function (e) {
-  divide.lastX = e.clientX - this.offsetLeft + pageXOffset
-  divide.lastY = e.clientY - this.offsetTop + pageYOffset
+  divide.lastX = e.clientX - this.getBoundingClientRect().left + pageXOffset
+  divide.lastY = e.clientY - this.getBoundingClientRect().top + pageYOffset
   if (divide.lastX < SIZE / 2)
     divide.pressed = 'left'
   else
@@ -175,8 +175,8 @@ divide.canvas.addEventListener('mouseleave', function () {
 })
 divide.canvas.addEventListener('mousemove', function (e) {
   if (divide.pressed) {
-    var x = e.clientX - this.offsetLeft + pageXOffset
-    var y = e.clientY - this.offsetTop + pageYOffset
+    var x = e.clientX - this.getBoundingClientRect().left + pageXOffset
+    var y = e.clientY - this.getBoundingClientRect().top + pageYOffset
     divide[divide.pressed + 'CenterX'] += (x - divide.lastX)
     divide[divide.pressed + 'CenterY'] += (y - divide.lastY)
     divide.lastX = x
