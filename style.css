@@ -1,0 +1,160 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  text-align: center;
+  font-family: 'Adobe 宋体 Stdl', '华文中宋', '华文宋体', '宋体', serif;
+  color: #333;
+  font-weight: 100;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+input,
+button,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+#intro,
+#full,
+#divide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+#full,
+#divide {
+  display: none;
+  overflow: auto;
+}
+#intro {
+  background-color: #333;
+  transition: top ease-in 0.35s;
+  top: 0;
+  color: white;
+  overflow: hidden;
+  padding-bottom: 50px;
+}
+#intro.chosen { 
+  top: -100%;
+}
+#choose {
+  font-size: 24px;
+  margin-top: 100px;
+  transition: all 0.35s;
+}
+@media all and (max-width:480px) {
+  #choose {
+    font-size: 16px;
+    margin-top: 20px;
+  }
+}
+#choice {
+  margin-top: 50px;
+}
+#choice > div {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  padding: 50px;
+  line-height: 100px;
+  font-size: 24px;
+}
+#return-intro {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+  background-color: #333;
+}
+
+.canvas-container,
+.form-group {
+  width: 560px;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px;
+  margin: 0 auto 10px;
+  position: relative;
+  overflow: hidden;
+}
+.canvas-container {
+  margin-top: 60px;
+}
+canvas {
+  max-width: 100%;
+}
+.form-group input {
+  width: 100%;
+  margin: 0;
+}
+.form-group label {
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+.form-group label + input {
+  width: 80%;
+  margin: 0;
+  float: right;
+}
+.save {
+  height: 50px;
+  background-color: #333;
+  color: white;
+  line-height: 50px;
+}
+
+.left {
+  position: relative;
+  width: 48%;
+  float: left;
+  padding: 0 10px;
+  margin: 0 -10px;
+}
+.right {
+  position: relative;
+  width: 48%;
+  float: right;
+  padding: 0 10px;
+  margin: 0 -10px;
+}
+
+
+.myth {
+  position: relative;
+}
+.myth div::before,
+.myth div::after {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	bottom: 5px;
+	left: 5px;
+	content: '';
+	opacity: 0;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+	transition: opacity 0.35s, transform 0.35s;
+}
+.myth div::before {
+	border-top: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
+	-webkit-transform: scale(0,1);
+	transform: scale(0,1);
+}
+.myth div::after {
+	border-right: 1px solid #e0e0e0;
+	border-left: 1px solid #e0e0e0;
+	-webkit-transform: scale(1,0);
+	transform: scale(1,0);
+}
+.myth:hover div::before,
+.myth:hover div::after {
+	opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
