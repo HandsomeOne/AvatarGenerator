@@ -43,6 +43,8 @@ full.img.addEventListener('change', function () {
   reader.onload = function (e) {
     full.image = new Image()
     full.image.src = e.target.result
+    full.centerX = SIZE / 2
+    full.centerY = SIZE / 2
     full.draw()
   }
 })
@@ -140,6 +142,10 @@ divide.leftImg.addEventListener('change', function () {
   reader.onload = function (e) {
     divide.leftImage = new Image()
     divide.leftImage.src = e.target.result
+    divide.leftCenterX = SIZE / 4
+    divide.leftCenterY = SIZE / 2
+    divide.rightCenterX = 3 * SIZE / 4
+    divide.rightCenterY = SIZE / 2
     divide.draw()
   }
 })
