@@ -1,8 +1,5 @@
 var SIZE = 540
 
-var mask = new Image()
-mask.src = 'mask.png'
-
 
 
 var full = document.getElementById('full')
@@ -41,11 +38,11 @@ full.img.addEventListener('change', function () {
   var reader = new FileReader()
   reader.readAsDataURL(this.files[0])
   reader.onload = function (e) {
-    full.image = new Image()
-    full.image.src = e.target.result
     full.centerX = SIZE / 2
     full.centerY = SIZE / 2
-    full.draw()
+    full.image = new Image()
+    full.image.addEventListener('load', full.draw)
+    full.image.src = e.target.result
   }
 })
 full.zoom.addEventListener('input', full.draw)
@@ -78,7 +75,6 @@ full.canvas.addEventListener('mousemove', function (e) {
 full.save.addEventListener('click', function () {
   open(full.canvas.toDataURL())
 })
-
 
 
 
@@ -140,13 +136,11 @@ divide.leftImg.addEventListener('change', function () {
   var reader = new FileReader()
   reader.readAsDataURL(this.files[0])
   reader.onload = function (e) {
-    divide.leftImage = new Image()
-    divide.leftImage.src = e.target.result
     divide.leftCenterX = SIZE / 4
     divide.leftCenterY = SIZE / 2
-    divide.rightCenterX = 3 * SIZE / 4
-    divide.rightCenterY = SIZE / 2
-    divide.draw()
+    divide.leftImage = new Image()
+    divide.leftImage.addEventListener('load', divide.draw)
+    divide.leftImage.src = e.target.result
   }
 })
 divide.leftZoom.addEventListener('input', divide.draw)
@@ -156,9 +150,11 @@ divide.rightImg.addEventListener('change', function () {
   var reader = new FileReader()
   reader.readAsDataURL(this.files[0])
   reader.onload = function (e) {
+    divide.rightCenterX = 3 * SIZE / 4
+    divide.rightCenterY = SIZE / 2
     divide.rightImage = new Image()
+    divide.rightImage.addEventListener('load', divide.draw)
     divide.rightImage.src = e.target.result
-    divide.draw()
   }
 })
 divide.rightZoom.addEventListener('input', divide.draw)
@@ -197,8 +193,13 @@ divide.save.addEventListener('click', function () {
 
 
 
-full.draw()
-divide.draw()
+var mask = new Image()
+mask.addEventListener('load', function () {
+  full.draw()
+  divide.draw()
+})
+mask.src = 'mask.png'
+
 
 
 var intro = document.getElementById('intro')
