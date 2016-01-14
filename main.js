@@ -69,6 +69,28 @@ full.canvas.addEventListener('mousemove', function (e) {
     full.draw();
   }
 });
+full.canvas.addEventListener('touchstart', function (e) {
+  e.preventDefault();
+  if (e.touches.length === 1) {
+    var touch = e.touches[0];
+    full.lastX = touch.clientX - this.getBoundingClientRect().left + pageXOffset;
+    full.lastY = touch.clientY - this.getBoundingClientRect().top + pageYOffset;
+    full.draw();
+  }
+});
+full.canvas.addEventListener('touchmove', function (e) {
+  e.preventDefault();
+  if (e.touches.length === 1) {
+    var touch = e.touches[0];
+    var x = touch.clientX - this.getBoundingClientRect().left + pageXOffset;
+    var y = touch.clientY - this.getBoundingClientRect().top + pageYOffset;
+    full.centerX += (x - full.lastX);
+    full.centerY += (y - full.lastY);
+    full.lastX = x;
+    full.lastY = y;
+    full.draw();
+  }
+});
 
 full.save.addEventListener('click', function () {
   open(full.canvas.toDataURL());
@@ -159,7 +181,7 @@ divide.rightAlpha.addEventListener('input', divide.draw);
 divide.canvas.addEventListener('mousedown', function (e) {
   divide.lastX = e.clientX - this.getBoundingClientRect().left + pageXOffset;
   divide.lastY = e.clientY - this.getBoundingClientRect().top + pageYOffset;
-  if (divide.lastX < SIZE / 2) {
+  if (divide.lastX < divide.canvas.clientWidth / 2) {
     divide.pressed = 'left';
   } else {
     divide.pressed = 'right';
@@ -176,6 +198,33 @@ divide.canvas.addEventListener('mousemove', function (e) {
   if (divide.pressed) {
     var x = e.clientX - this.getBoundingClientRect().left + pageXOffset;
     var y = e.clientY - this.getBoundingClientRect().top + pageYOffset;
+    divide[divide.pressed + 'CenterX'] += (x - divide.lastX);
+    divide[divide.pressed + 'CenterY'] += (y - divide.lastY);
+    divide.lastX = x;
+    divide.lastY = y;
+    divide.draw();
+  }
+});
+divide.canvas.addEventListener('touchstart', function (e) {
+  e.preventDefault();
+  if (e.touches.length === 1) {
+    var touch = e.touches[0];
+    divide.lastX = touch.clientX - this.getBoundingClientRect().left + pageXOffset;
+    divide.lastY = touch.clientY - this.getBoundingClientRect().top + pageYOffset;
+    if (divide.lastX < divide.canvas.clientWidth / 2) {
+      divide.pressed = 'left';
+    } else {
+      divide.pressed = 'right';
+    }
+    divide.draw();
+  }
+});
+divide.canvas.addEventListener('touchmove', function (e) {
+  e.preventDefault();
+  if (e.touches.length === 1) {
+    var touch = e.touches[0];
+    var x = touch.clientX - this.getBoundingClientRect().left + pageXOffset;
+    var y = touch.clientY - this.getBoundingClientRect().top + pageYOffset;
     divide[divide.pressed + 'CenterX'] += (x - divide.lastX);
     divide[divide.pressed + 'CenterY'] += (y - divide.lastY);
     divide.lastX = x;
