@@ -93,7 +93,9 @@ full.canvas.addEventListener('touchmove', function (e) {
 });
 
 full.save.addEventListener('click', function () {
-  open(full.canvas.toDataURL());
+  full.canvas.toBlob(function (blob) {
+    window.saveAs(blob, 'avatar.png');
+  });
 });
 
 var divide = $('#divide');
@@ -234,7 +236,9 @@ divide.canvas.addEventListener('touchmove', function (e) {
 });
 
 divide.save.addEventListener('click', function () {
-  open(divide.canvas.toDataURL());
+  divide.canvas.toBlob(function (blob) {
+    window.saveAs(blob, 'avatar.png');
+  });
 });
 
 var mask = new Image();
