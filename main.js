@@ -246,6 +246,7 @@ mask.addEventListener('load', function () {
   full.draw();
   divide.draw();
 });
+mask.setAttribute('crossOrigin', 'anonymous');
 mask.src = 'mask.png';
 
 var intro = $('#intro');
