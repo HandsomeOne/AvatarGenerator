@@ -3,3 +3,10 @@ CACHE MANIFEST
 main.js
 mask.png
 style.css
+https://cdn.rawgit.com/eligrey/Blob.js/master/Blob.js
+https://cdn.rawgit.com/eligrey/canvas-toBlob.js/master/canvas-toBlob.js
+https://cdn.rawgit.com/eligrey/FileSaver.js/master/FileSaver.min.js
+https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67
+
+NETWORK:
+*
