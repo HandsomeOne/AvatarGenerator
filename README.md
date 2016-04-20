@@ -1,7 +1,5 @@
-# HandsomeOne™ 的头像生成器
+# [HandsomeOne™ 的头像生成器](https://handsomeone.github.io/AvatarGenerator/)
 
 将心爱的事物收入眼中。
 
 提供最自然的操控方式。
-
-#[查看演示](http://handsomeone.github.io/AvatarGenerator/)
